@@ -68,9 +68,10 @@ if __name__ == "__main__":
                         locs_per_package[package] += code_lines
                 elif file_path.endswith(".so"):
                     binary_files_per_package[package].append((file, os.path.getsize(file_path)))
+        total_locs = sum(locs_per_package.values())
+        print(f"\n\n\nTOTAL LOCs {total_locs}")
 
-
-        print("\n\n\nLOCs per package:")
+        print("\nLOCs per package:")
         for package, locs in sorted(locs_per_package.items(), key=lambda x: x[1], reverse=True):
             print(f"{package:.<30} {locs}")
 
